@@ -7,5 +7,43 @@
 </head>
 <body>
     <h1>Calendar Working</h1>
+    <form method="post" action='/'>
+        <p>{{ form.hidden_tag() }}</p>
+        <p>Name {{ form.name(placeholder='Enter a Name') }}</p>
+        <p>Start Date {{ form.start_date() }}</p>
+        <p> Start Time {{ form.start_time() }}</p>
+        <p>End Date {{ form.end_date() }}</p>
+        <p>End Time {{ form.end_time() }}</p>
+        <p>Description {{ form.description(placeholder='Enter description') }}</p>
+        <p>Private? {{ form.private()}}</p>
+        <p>{{ form.submit()}}</p>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in rows %}
+                <tr>
+                    <td>
+                        <p>{{ item[1] }}</p>
+                    </td>
+                    <td>
+                        <p>{{ item[2].strftime("%H:%M") }}</p>
+                    </td>
+                    <td>
+                        <p>{{ item[3].strftime("%H:%M") }}</p>
+                    </td>
+                </tr>
+            {% endfor %}
+            <!-- loop here to create rows -->
+            <!-- use strftime to format date objects -->
+            <!-- loop here to create rows -->
+        </tbody>
+    </table>
 </body>
 </html>
